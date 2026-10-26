@@ -1,87 +1,237 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NICOLAFFVN | Nguyễn Gia Phú</title>
+<title>NICOLAFFVN - Liên hệ</title>
+
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        min-height: 100vh;
-        padding: 25px 14px;
-        background: radial-gradient(ellipse at top, #123b80 0%, #071426 45%, #02040a 100%);
-        color: white;
-        font-family: "Segoe UI", Arial, sans-serif;
-    }
-    .container {
-        width: min(100%, 460px);
-        margin: auto;
-    }
-    .profile {
-        border-radius: 24px;
-        border: 1px solid #00bfff;
-        box-shadow: 0 0 30px #007bff50;
-        background: #071426;
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
-    }
-    .profile img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    .header { text-align: center; padding: 23px 5px; }
-    .header h1 { font-size: 32px; font-weight: 900; }
-    .header h1 span { color: #00d9ff; }
-    .header p { color: #b1c7e8; margin-top: 10px; font-size: 13px; }
-    .links { display: grid; gap: 13px; }
-    .contact {
-        display: flex; align-items: center; gap: 13px; padding: 14px;
-        border: 1px solid #244c79; border-radius: 16px;
-        background: linear-gradient(110deg, #0d203b, #07101e);
-        color: white; text-decoration: none;
-    }
-    .icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: #00d9ff; font-weight: bold; font-size: 20px; color: #000; }
-    .qr-card { margin-top: 20px; padding: 18px; background: white; color: #111827; border-radius: 20px; text-align: center; }
-    .qr-card img { width: min(100%, 300px); display: block; margin: 10px auto; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    padding: 25px 15px;
+    color: white;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #123a78, #050914 65%);
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    margin: auto;
+}
+
+.profile {
+    overflow: hidden;
+    border-radius: 24px;
+    border: 2px solid #00cfff;
+    box-shadow: 0 0 25px #007bff80;
+}
+
+.profile img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+h1 {
+    text-align: center;
+    margin: 25px 0 10px;
+    font-size: 32px;
+    font-weight: 900;
+    text-shadow: 0 0 15px #008cff;
+}
+
+h1 span {
+    color: #00d9ff;
+}
+
+.subtitle {
+    text-align: center;
+    color: #a9c7ef;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.links {
+    display: grid;
+    gap: 13px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 15px;
+    background: #0b1a30;
+    border: 1px solid #234a78;
+    color: white;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.contact:hover {
+    border-color: #00d9ff;
+    box-shadow: 0 0 18px #007bff70;
+    transform: translateY(-2px);
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00d9ff, #075dff);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.details strong {
+    display: block;
+    font-size: 15px;
+}
+
+.details small {
+    display: block;
+    color: #9bb5d8;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.arrow {
+    margin-left: auto;
+    color: #00d9ff;
+    font-size: 24px;
+}
+
+.qr {
+    background: white;
+    color: #111;
+    text-align: center;
+    border-radius: 18px;
+    padding: 20px;
+    margin-top: 22px;
+}
+
+.qr h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.qr p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.qr img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: auto;
+}
+
+.footer {
+    text-align: center;
+    color: #8198b9;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+.footer strong {
+    display: block;
+    color: #00d9ff;
+    font-size: 14px;
+    letter-spacing: 0;
+}
 </style>
 </head>
+
 <body>
-
 <main class="container">
-    <section class="profile">
-        <img src="./avatar.jpg" onerror="this.src='./avatar.png'" alt="Avatar">
-    </section>
 
-    <header class="header">
-        <h1>NICOLAFFVN<span>.</span></h1>
-        <p>KẾT NỐI VỚI TÔI<br>Hiện đại · Nhanh chóng · Chuyên nghiệp</p>
-    </header>
+    <div class="profile">
+        <img src="./avatar.png"
+             alt="NICOLAFFVN Nguyễn Gia Phú">
+    </div>
+
+    <h1>NICOLAFFVN<span>.</span></h1>
+
+    <p class="subtitle">
+        KẾT NỐI VỚI TÔI<br>
+        Hiện đại · Nhanh chóng · Chuyên nghiệp
+    </p>
 
     <nav class="links">
-        <a class="contact" href="https://www.facebook.com/share/1Fcp7E2HaQ/" target="_blank">
+
+        <a class="contact"
+           href="https://www.facebook.com/share/1Fcp7E2HaQ/"
+           target="_blank" rel="noopener noreferrer">
             <span class="icon">f</span>
-            <span><strong>Facebook</strong><br><small>Trang Facebook liên hệ</small></span>
+            <span class="details">
+                <strong>Facebook</strong>
+                <small>Trang Facebook liên hệ</small>
+            </span>
+            <span class="arrow">›</span>
         </a>
-        <a class="contact" href="https://www.tiktok.com/@nicolaffcreator" target="_blank">
+
+        <a class="contact"
+           href="https://www.tiktok.com/@nicolaffcreator?_r=1&amp;_t=ZT-9As6uIEATU6"
+           target="_blank" rel="noopener noreferrer">
             <span class="icon">♪</span>
-            <span><strong>Kênh TikTok 1</strong><br><small>Nhấn để chuyển đến kênh</small></span>
+            <span class="details">
+                <strong>Kênh TikTok 1</strong>
+                <small>Nhấn để truy cập kênh</small>
+            </span>
+            <span class="arrow">›</span>
         </a>
-        <a class="contact" href="https://www.tiktok.com/@nicolaffvnclone" target="_blank">
+
+        <a class="contact"
+           href="https://www.tiktok.com/@nicolaffvnclone?_r=1&amp;_t=ZS-9As7JCPAwoG"
+           target="_blank" rel="noopener noreferrer">
             <span class="icon">♪</span>
-            <span><strong>Kênh TikTok 2</strong><br><small>Nhấn để chuyển đến kênh</small></span>
+            <span class="details">
+                <strong>Kênh TikTok 2</strong>
+                <small>Nhấn để truy cập kênh</small>
+            </span>
+            <span class="arrow">›</span>
         </a>
+
     </nav>
 
-    <section class="qr-card">
+    <section class="qr">
         <h2>Liên hệ qua Zalo</h2>
-        <p>Quét mã QR bên dưới để kết nối.</p>
-        <img src="./zalo-qr.jpg" onerror="this.src='./zalo-qr.png'" alt="Mã QR Zalo">
-        <p style="margin-top: 10px; font-weight: bold;">QUÉT MÃ QR ĐỂ KẾT NỐI</p>
-    </section>
-</main>
+        <p>Mở Zalo và quét mã QR bên dưới.</p>
 
+        <img src="./zalo-qr.jpg"
+             alt="Mã QR Zalo">
+
+        <p style="margin:15px 0 0;font-weight:bold;color:#111">
+            QUÉT MÃ ĐỂ KẾT NỐI
+        </p>
+    </section>
+
+    <footer class="footer">
+        DESIGNED BY
+        <strong>NICOLAFFVN Nguyễn Gia Phú</strong>
+    </footer>
+
+</main>
 </body>
 </html>
