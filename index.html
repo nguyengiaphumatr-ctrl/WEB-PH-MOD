@@ -1,251 +1,110 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NICOLAFFVN</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #fff;
-    color: #101828;
-}
-
-.lightning {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.bolt {
-    position: absolute;
-    width: 3px;
-    height: 220px;
-    background: #00bfff;
-    box-shadow: 0 0 8px #00bfff, 0 0 20px #008cff,
-                0 0 45px #00aaff;
-    clip-path: polygon(50% 0, 100% 0, 45% 45%,
-                       100% 45%, 0 100%, 35% 55%,
-                       0 55%);
-    animation: flash 3s infinite;
-    opacity: 0;
-}
-
-.bolt:nth-child(1) {
-    left: 12%;
-    top: 5%;
-    height: 190px;
-}
-
-.bolt:nth-child(2) {
-    left: 82%;
-    top: 15%;
-    height: 240px;
-    animation-delay: 1s;
-}
-
-.bolt:nth-child(3) {
-    left: 25%;
-    top: 65%;
-    height: 180px;
-    animation-delay: 1.8s;
-}
-
-.bolt:nth-child(4) {
-    left: 72%;
-    top: 60%;
-    height: 210px;
-    animation-delay: 0.5s;
-}
-
-@keyframes flash {
-    0%, 84%, 100% { opacity: 0; }
-    86% { opacity: 1; }
-    88% { opacity: .2; }
-    90% { opacity: 1; }
-    94% { opacity: 0; }
-}
-
-.glow {
-    position: fixed;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: rgba(0, 153, 255, .12);
-    filter: blur(85px);
-    pointer-events: none;
-}
-
-.glow.one {
-    top: -100px;
-    left: -100px;
-}
-
-.glow.two {
-    right: -100px;
-    bottom: -100px;
-}
-
-.card {
-    width: min(90%, 420px);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 38px 25px;
-    border-radius: 26px;
-    background: rgba(255, 255, 255, .94);
-    border: 1px solid #d9f2ff;
-    box-shadow: 0 15px 55px rgba(0, 145, 255, .13);
-}
-
-.logo {
-    width: 82px;
-    height: 82px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 24px;
-    color: white;
-    font-size: 28px;
-    font-weight: 900;
-    background: linear-gradient(135deg, #00d4ff, #0066ff);
-    box-shadow: 0 0 28px rgba(0, 145, 255, .4);
-}
-
-h1 {
-    font-size: 29px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-h1 span {
-    color: #008cff;
-}
-
-.subtitle {
-    margin-top: 13px;
-    color: #68778a;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.line {
-    height: 3px;
-    width: 65px;
-    margin: 24px auto;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #00d4ff, #0066ff);
-    box-shadow: 0 0 14px #00aaff;
-}
-
-.contact {
-    display: block;
-    padding: 16px;
-    margin-top: 13px;
-    text-decoration: none;
-    color: #152238;
-    font-size: 15px;
-    font-weight: 700;
-    border-radius: 14px;
-    border: 1px solid #e0f2ff;
-    background: #f8fcff;
-    transition: .3s;
-}
-
-.contact span {
-    color: #008cff;
-    margin-right: 8px;
-}
-
-.contact:hover {
-    transform: translateY(-3px);
-    border-color: #00aaff;
-    box-shadow: 0 6px 22px rgba(0, 145, 255, .16);
-}
-
-.credit {
-    margin-top: 26px;
-    color: #8793a4;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
-
-.credit strong {
-    display: block;
-    color: #007fff;
-    margin-top: 8px;
-    font-size: 14px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Cá Nhân</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.6);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .title {
+            font-size: 14px;
+            color: #00f2fe;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        .bio {
+            font-size: 14px;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn {
+            display: block;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn:hover {
+            background: #4facfe;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="glow one"></div>
-<div class="glow two"></div>
+    <div class="card">
+        <div class="avatar">P</div>
+        <h1>Nguyễn Gia Phú</h1>
+        <div class="title">Developer / Modder</div>
+        
+        <p class="bio">
+            Chào mừng đến với không gian của mình! <br>
+            Đam mê lập trình, thiết kế và chia sẻ các dự án mã nguồn mở.
+        </p>
 
-<div class="lightning">
-    <div class="bolt"></div>
-    <div class="bolt"></div>
-    <div class="bolt"></div>
-    <div class="bolt"></div>
-</div>
-
-<main class="card">
-
-    <div class="logo">N+</div>
-
-    <h1>NICOLAFFVN<span>.</span></h1>
-
-    <p class="subtitle">
-        Kết nối với chúng tôi<br>
-        Hiện đại · Nhanh chóng · Chuyên nghiệp
-    </p>
-
-    <div class="line"></div>
-
-    <a class="contact"
-       href="https://www.facebook.com/"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span>✦</span> Facebook liên hệ
-    </a>
-
-    <a class="contact"
-       href="https://www.tiktok.com/"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span>✦</span> TikTok liên hệ
-    </a>
-
-    <a class="contact"
-       href="https://zalo.me/"
-       target="_blank"
-       rel="noopener noreferrer">
-        <span>✦</span> Zalo liên hệ
-    </a>
-
-    <div class="credit">
-        DESIGNED BY
-        <strong>NICOLAFFVN Nguyễn Gia Phú</strong>
+        <div class="links">
+            <a href="https://facebook.com/your_profile" class="btn" target="_blank">Facebook</a>
+            <a href="https://zalo.me/your_phone" class="btn" target="_blank">Zalo</a>
+            <a href="https://github.com/nguyengiaphumatr-ctrl" class="btn" target="_blank">GitHub</a>
+        </div>
     </div>
-
-</main>
 
 </body>
 </html>
