@@ -1,117 +1,251 @@
-local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local LocalPlayer = Players.LocalPlayer
 
-local KEY_URL = "https://raw.githubusercontent.com/nguyengiaphumatr-ctrl/Key/refs/heads/main/Key%20Ph%C3%BA%20Menu"
-local CAT_GIF_URL = "https://media.tenor.com/6bJfC1j4C6AAAAAj/cat-stare.gif" 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NICOLAFFVN</title>
 
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "CTD_CatKeySystem"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-local KeyFrame = Instance.new("Frame")
-KeyFrame.Size = UDim2.new(0, 300, 0, 220)
-KeyFrame.Position = UDim2.new(0.5, -150, 0.5, -110)
-KeyFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-KeyFrame.BorderSizePixel = 0
-KeyFrame.Active = true
-KeyFrame.Draggable = true
-KeyFrame.Parent = ScreenGui
-Instance.new("UICorner", KeyFrame).CornerRadius = UDim.new(0, 10)
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff;
+    color: #101828;
+}
 
-local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 30)
-Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Title.Text = "Menu Phú Hub - Key System"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 14
-Title.Parent = KeyFrame
-Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 10)
+.lightning {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
 
-local Input = Instance.new("TextBox")
-Input.Size = UDim2.new(0.8, 0, 0, 30)
-Input.Position = UDim2.new(0.1, 0, 0, 50)
-Input.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Input.TextColor3 = Color3.fromRGB(255, 255, 255)
-Input.PlaceholderText = "Nhập key..."
-Input.PlaceholderColor3 = Color3.fromRGB(150, 150, 150)
-Input.Text = ""
-Input.Parent = KeyFrame
-Instance.new("UICorner", Input).CornerRadius = UDim.new(0, 5)
+.bolt {
+    position: absolute;
+    width: 3px;
+    height: 220px;
+    background: #00bfff;
+    box-shadow: 0 0 8px #00bfff, 0 0 20px #008cff,
+                0 0 45px #00aaff;
+    clip-path: polygon(50% 0, 100% 0, 45% 45%,
+                       100% 45%, 0 100%, 35% 55%,
+                       0 55%);
+    animation: flash 3s infinite;
+    opacity: 0;
+}
 
-local Status = Instance.new("TextLabel")
-Status.Size = UDim2.new(0.8, 0, 0, 20)
-Status.Position = UDim2.new(0.1, 0, 0, 85)
-Status.BackgroundTransparency = 1
-Status.Text = ""
-Status.TextColor3 = Color3.fromRGB(255, 255, 255)
-Status.TextSize = 12
-Status.Parent = KeyFrame
+.bolt:nth-child(1) {
+    left: 12%;
+    top: 5%;
+    height: 190px;
+}
 
-local Submit = Instance.new("TextButton")
-Submit.Size = UDim2.new(0.8, 0, 0, 30)
-Submit.Position = UDim2.new(0.1, 0, 0, 115)
-Submit.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-Submit.Text = "Xác nhận"
-Submit.TextColor3 = Color3.fromRGB(255, 255, 255)
-Submit.Font = Enum.Font.GothamBold
-Submit.Parent = KeyFrame
-Instance.new("UICorner", Submit).CornerRadius = UDim.new(0, 5)
+.bolt:nth-child(2) {
+    left: 82%;
+    top: 15%;
+    height: 240px;
+    animation-delay: 1s;
+}
 
-local CatFrame = Instance.new("Frame")
-CatFrame.Size = UDim2.new(0, 300, 0, 300)
-CatFrame.Position = UDim2.new(0.5, -150, 0.5, -150)
-CatFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-CatFrame.BorderSizePixel = 0
-CatFrame.Visible = false
-CatFrame.Parent = ScreenGui
-Instance.new("UICorner", CatFrame).CornerRadius = UDim.new(0, 10)
+.bolt:nth-child(3) {
+    left: 25%;
+    top: 65%;
+    height: 180px;
+    animation-delay: 1.8s;
+}
 
-local CatImage = Instance.new("ImageLabel")
-CatImage.Size = UDim2.new(1, 0, 1, 0)
-CatImage.BackgroundTransparency = 1
-CatImage.Image = CAT_GIF_URL
-CatImage.ScaleType = Enum.ScaleType.Crop
-CatImage.Parent = CatFrame
-Instance.new("UICorner", CatImage).CornerRadius = UDim.new(0, 10)
+.bolt:nth-child(4) {
+    left: 72%;
+    top: 60%;
+    height: 210px;
+    animation-delay: 0.5s;
+}
 
-Submit.MouseButton1Click:Connect(function()
-    local inputKey = Input.Text
-    if inputKey == "" then return end
-    
-    Status.Text = "Đang kiểm tra..."
-    Status.TextColor3 = Color3.fromRGB(255, 255, 0)
-    
-    local success, response = pcall(function()
-        return request({
-            Url = KEY_URL,
-            Method = "GET"
-        })
-    end)
-    
-    if success and response and response.StatusCode == 200 then
-        local validKeys = response.Body
-        if string.find(validKeys, inputKey) then
-            KeyFrame.Visible = false
-            CatFrame.Visible = true
-            task.wait(2)
-            CatFrame.Visible = false
-        else
-            Submit.Text = "Sai key!"
-            Submit.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-            Status.Text = "Key không tồn tại hoặc đã hết hạn."
-            Status.TextColor3 = Color3.fromRGB(255, 0, 0)
-            task.wait(1)
-            Submit.Text = "Xác nhận"
-            Submit.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-            Input.Text = ""
-        end
-    else
-        Status.Text = "Lỗi kết nối (Request)."
-        Status.TextColor3 = Color3.fromRGB(255, 0, 0)
-        Submit.Text = "Thử lại"
-    end
-end)
+@keyframes flash {
+    0%, 84%, 100% { opacity: 0; }
+    86% { opacity: 1; }
+    88% { opacity: .2; }
+    90% { opacity: 1; }
+    94% { opacity: 0; }
+}
+
+.glow {
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: rgba(0, 153, 255, .12);
+    filter: blur(85px);
+    pointer-events: none;
+}
+
+.glow.one {
+    top: -100px;
+    left: -100px;
+}
+
+.glow.two {
+    right: -100px;
+    bottom: -100px;
+}
+
+.card {
+    width: min(90%, 420px);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 38px 25px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, .94);
+    border: 1px solid #d9f2ff;
+    box-shadow: 0 15px 55px rgba(0, 145, 255, .13);
+}
+
+.logo {
+    width: 82px;
+    height: 82px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00d4ff, #0066ff);
+    box-shadow: 0 0 28px rgba(0, 145, 255, .4);
+}
+
+h1 {
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+h1 span {
+    color: #008cff;
+}
+
+.subtitle {
+    margin-top: 13px;
+    color: #68778a;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.line {
+    height: 3px;
+    width: 65px;
+    margin: 24px auto;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00d4ff, #0066ff);
+    box-shadow: 0 0 14px #00aaff;
+}
+
+.contact {
+    display: block;
+    padding: 16px;
+    margin-top: 13px;
+    text-decoration: none;
+    color: #152238;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 14px;
+    border: 1px solid #e0f2ff;
+    background: #f8fcff;
+    transition: .3s;
+}
+
+.contact span {
+    color: #008cff;
+    margin-right: 8px;
+}
+
+.contact:hover {
+    transform: translateY(-3px);
+    border-color: #00aaff;
+    box-shadow: 0 6px 22px rgba(0, 145, 255, .16);
+}
+
+.credit {
+    margin-top: 26px;
+    color: #8793a4;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.credit strong {
+    display: block;
+    color: #007fff;
+    margin-top: 8px;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="lightning">
+    <div class="bolt"></div>
+    <div class="bolt"></div>
+    <div class="bolt"></div>
+    <div class="bolt"></div>
+</div>
+
+<main class="card">
+
+    <div class="logo">N+</div>
+
+    <h1>NICOLAFFVN<span>.</span></h1>
+
+    <p class="subtitle">
+        Kết nối với chúng tôi<br>
+        Hiện đại · Nhanh chóng · Chuyên nghiệp
+    </p>
+
+    <div class="line"></div>
+
+    <a class="contact"
+       href="https://www.facebook.com/"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✦</span> Facebook liên hệ
+    </a>
+
+    <a class="contact"
+       href="https://www.tiktok.com/"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✦</span> TikTok liên hệ
+    </a>
+
+    <a class="contact"
+       href="https://zalo.me/"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✦</span> Zalo liên hệ
+    </a>
+
+    <div class="credit">
+        DESIGNED BY
+        <strong>NICOLAFFVN Nguyễn Gia Phú</strong>
+    </div>
+
+</main>
+
+</body>
+</html>
